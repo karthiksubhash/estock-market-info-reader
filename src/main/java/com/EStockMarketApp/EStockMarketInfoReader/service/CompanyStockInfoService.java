@@ -82,7 +82,9 @@ public class CompanyStockInfoService {
 			DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm", Locale.ENGLISH);
 			final LocalDateTime sDateTime = LocalDateTime.parse(startDate, inputFormatter);
 			final LocalDateTime eDateTime = LocalDateTime.parse(endDate, inputFormatter);
-
+			max = null;
+			min = null;
+			
 			if(estockInfoModel.isPresent()) {
 				EstockInfoModelDTO estockInfoModelDTO = new EstockInfoModelDTO();
 				List<StockInfoModelDTO> stocksListDTO = new ArrayList<StockInfoModelDTO>();
