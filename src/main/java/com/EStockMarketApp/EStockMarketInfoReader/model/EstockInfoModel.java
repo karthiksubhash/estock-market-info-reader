@@ -1,5 +1,6 @@
 package com.EStockMarketApp.EStockMarketInfoReader.model;
 
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import lombok.ToString;
 public class EstockInfoModel {
 
 	@Id
-	private Long id;
+	private BigInteger _id;
 	private String companyName;
 	private String turnover;
 	private String ceo;
@@ -43,11 +44,11 @@ public class EstockInfoModel {
 		this.dateTime = dateTime; 
 	}
 
-	public Long getId() {
-		return id;
+	public BigInteger getId() {
+		return _id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(BigInteger id) {
+		this._id = id;
 	}
 	public String getCompanyName() {
 		return companyName;

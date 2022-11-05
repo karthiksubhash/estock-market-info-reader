@@ -1,5 +1,6 @@
 package com.EStockMarketApp.EStockMarketInfoReader.dto;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -14,8 +15,7 @@ import lombok.ToString;
 @ToString 
 public class EstockInfoModelDTO {
 
-	@Id
-	private Long id;
+	private BigInteger id;
 	private String companyName;
 	private String turnover;
 	private String ceo;
@@ -23,6 +23,8 @@ public class EstockInfoModelDTO {
 	private String stockexchangeenlisted;
 	private String dateTime;
 	private List<StockInfoModelDTO> stocksList;
+	private String minStockPrice;
+	private String maxStockPrice;
 
 	public String getStockexchangeenlisted() {
 		return stockexchangeenlisted;
@@ -40,10 +42,10 @@ public class EstockInfoModelDTO {
 		this.dateTime = dateTime; 
 	}
 
-	public Long getId() {
+	public BigInteger getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 	public String getCompanyName() {
@@ -75,5 +77,21 @@ public class EstockInfoModelDTO {
 	}
 	public void setStocksList(List<StockInfoModelDTO> stocksList) {
 		this.stocksList = stocksList;
+	}
+
+	public String getMinStockPrice() {
+		return minStockPrice;
+	}
+
+	public void setMinStockPrice(String minStockPrice) {
+		this.minStockPrice = minStockPrice;
+	}
+
+	public String getMaxStockPrice() {
+		return maxStockPrice;
+	}
+
+	public void setMaxStockPrice(String maxStockPrice) {
+		this.maxStockPrice = maxStockPrice;
 	}
 }

@@ -20,7 +20,9 @@ public interface StockInfoMapper {
 		estockInfoModelDTO.setStockexchangeenlisted(estockInfo.getStockexchangeenlisted());
 		estockInfoModelDTO.setTurnover(estockInfo.getTurnover());
 		estockInfoModelDTO.setWebsite(estockInfo.getWebsite());
+		if(null != estockInfo.getDateTime()) {
 		estockInfoModelDTO.setDateTime(estockInfo.getDateTime().toString());
+		}
 		if(null != estockInfo.getStocksList() && !estockInfo.getStocksList().isEmpty()) {
 			List<StockInfoModelDTO> stocksList = stockInfoModelToDTOList(estockInfo.getStocksList());
 			if(null != stocksList && !stocksList.isEmpty()) {
@@ -44,7 +46,9 @@ public interface StockInfoMapper {
 		stockModelDTO.setCompanyCode(stockModel.getCompanyCode());
 		stockModelDTO.setId(stockModel.getId());
 		stockModelDTO.setStockPrice(stockModel.getStockPrice());
-		stockModelDTO.setDateTime(stockModel.getDateTime().toString());
+		if(null != stockModel.getDateTime() ) {
+			stockModelDTO.setDateTime(stockModel.getDateTime().toString());
+		}
 		stockModelDTO.setIsDeleted(stockModel.getIsDeleted());
 	}
 	

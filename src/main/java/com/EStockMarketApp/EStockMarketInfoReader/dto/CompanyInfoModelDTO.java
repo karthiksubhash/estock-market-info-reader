@@ -1,6 +1,7 @@
 package com.EStockMarketApp.EStockMarketInfoReader.dto;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -23,7 +24,7 @@ public class CompanyInfoModelDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Long code;
+	private BigInteger code;
 	private String name;
 	private String ceo;
 	private String turnover;
@@ -33,10 +34,10 @@ public class CompanyInfoModelDTO implements Serializable {
 	
 	private static final Logger LOGGER=LoggerFactory.getLogger(CompanyInfoModelDTO.class);
 	
-	public Long getCode() {
+	public BigInteger getCode() {
 		return code;
 	}
-	public void setCode(Long code) {
+	public void setCode(BigInteger code) {
 		this.code = code;
 	}
 	public String getName() {
