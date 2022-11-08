@@ -31,20 +31,30 @@ public class CompanyStockInfoService {
 
 	private Double max= null;
 	private Double min = null;
+	private Double avg = null;
+	private Double total = null;
 	
 	public EstockInfoModelDTO findInfoById(Long id) {
 
 		Optional<EstockInfoModel> estockInfoModel= companyStockInfoRepository.findById(id);
 	
 		if(estockInfoModel.isPresent()) {
+			max = null;
+			min = null;
+			total = null;
+			avg = null;
 			EstockInfoModelDTO estockInfoModelDTO = new EstockInfoModelDTO();
 			EstockInfoModel estockInfo = estockInfoModel.get();
 			StockInfoMapper.estockInfoModelToDTO(estockInfo, estockInfoModelDTO);		
 			if(null != estockInfoModelDTO.getId()) {
-				estockInfoModelDTO.getStocksList()
-				.forEach(stock -> getMaxMin(stock));
-				estockInfoModelDTO.setMaxStockPrice(String.valueOf(max));
-				estockInfoModelDTO.setMinStockPrice(String.valueOf(min));
+				if(null != estockInfoModelDTO.getStocksList() && !estockInfoModelDTO.getStocksList().isEmpty()) {
+					estockInfoModelDTO.getStocksList()
+					.forEach(stock -> getMaxMin(stock));
+					avg = total/estockInfoModelDTO.getStocksList().size();
+					estockInfoModelDTO.setMaxStockPrice(String.valueOf(max));
+					estockInfoModelDTO.setMinStockPrice(String.valueOf(min));
+					estockInfoModelDTO.setAvg(String.valueOf(avg));
+				}
 				return estockInfoModelDTO;
 			}
 			
@@ -56,6 +66,11 @@ public class CompanyStockInfoService {
 	private void getMaxMin(StockInfoModelDTO stock) {
 		if(null != stock.getStockPrice()) {
 			Double stockPrice= Double.valueOf(stock.getStockPrice());
+			if(null == total) {
+				total =  stockPrice;
+			}else {
+				total =  Double.sum(total, stockPrice);
+			}
 			if(null == min ) {
 				min = stockPrice;
 			}
@@ -84,6 +99,9 @@ public class CompanyStockInfoService {
 			final LocalDateTime eDateTime = LocalDateTime.parse(endDate, inputFormatter);
 			max = null;
 			min = null;
+			total = null;
+			avg = null;
+			
 			
 			if(estockInfoModel.isPresent()) {
 				EstockInfoModelDTO estockInfoModelDTO = new EstockInfoModelDTO();
@@ -110,8 +128,10 @@ public class CompanyStockInfoService {
 						stocksListDTO.forEach(stock -> { 
 							getMaxMin(stock);
 							});
+						avg = total/estockInfoModelDTO.getStocksList().size();
 						estockInfoModelDTO.setMaxStockPrice(String.valueOf(max));
 						estockInfoModelDTO.setMinStockPrice(String.valueOf(min));
+						estockInfoModelDTO.setAvg(String.valueOf(avg));
 					}
 					
 					return estockInfoModelDTO;
@@ -135,6 +155,20 @@ public class CompanyStockInfoService {
 	private void createList(EstockInfoModel estockInfo, List<EstockInfoModelDTO> estockInfoModelDTOList) {
 		EstockInfoModelDTO estockInfoModelDTO = new EstockInfoModelDTO();
 		StockInfoMapper.estockInfoModelToDTO(estockInfo, estockInfoModelDTO);
+		max = null;
+		min = null;
+		total = null;
+		avg = null;
+		if(null != estockInfoModelDTO.getId()) {
+			if(null != estockInfoModelDTO.getStocksList() && !estockInfoModelDTO.getStocksList().isEmpty()) {
+				estockInfoModelDTO.getStocksList()
+				.forEach(stock -> getMaxMin(stock));
+				avg = total/estockInfoModelDTO.getStocksList().size();
+				estockInfoModelDTO.setMaxStockPrice(String.valueOf(max));
+				estockInfoModelDTO.setMinStockPrice(String.valueOf(min));
+				estockInfoModelDTO.setAvg(String.valueOf(avg));
+			}
+		}
 		estockInfoModelDTOList.add(estockInfoModelDTO);
 	}
 }

@@ -25,6 +25,7 @@ public class EstockInfoModelDTO {
 	private List<StockInfoModelDTO> stocksList;
 	private String minStockPrice;
 	private String maxStockPrice;
+	private String avg;
 
 	public String getStockexchangeenlisted() {
 		return stockexchangeenlisted;
@@ -93,5 +94,13 @@ public class EstockInfoModelDTO {
 
 	public void setMaxStockPrice(String maxStockPrice) {
 		this.maxStockPrice = maxStockPrice;
+	}
+
+	public String getAvg() {
+		return avg;
+	}
+
+	public void setAvg(String avg) {
+		this.avg = avg;
 	}
 }
