@@ -3,8 +3,6 @@ package com.EStockMarketApp.EStockMarketInfoReader.dto;
 import java.math.BigInteger;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;

@@ -13,11 +13,9 @@ import com.EStockMarketApp.EStockMarketInfoReader.model.EstockInfoModel;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString 
 public class CompanyInfoModelDTO implements Serializable {
 
 	/**
