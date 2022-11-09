@@ -1,10 +1,7 @@
 package com.EStockMarketApp.EStockMarketInfoReader.mapper;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import com.EStockMarketApp.EStockMarketInfoReader.dto.EstockInfoModelDTO;
 import com.EStockMarketApp.EStockMarketInfoReader.dto.StockInfoModelDTO;
