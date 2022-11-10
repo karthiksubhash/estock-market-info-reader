@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.EStockMarketApp.EStockMarketInfoReader.dto.EstockInfoModelDTO;
 import com.EStockMarketApp.EStockMarketInfoReader.service.CompanyStockInfoService;
 
-
-@RestController
 @CrossOrigin
+@RestController
 public class CompanyStockInfoAPI {
 
 	@Autowired
